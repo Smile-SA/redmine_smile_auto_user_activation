@@ -1,0 +1,33 @@
+$('#tab-content-members').html('<%= escape_javascript(render :partial => 'projects/settings/members') %>');
+hideOnLoad();
+
+<%
+  ########################################################
+  # Smile specific #24789 Project Leaders users activation
+-%>
+$("#flash_notice").remove();
+
+<% if @members.present? && @members.all? {|m| m.valid? } %>
+  hideModal();
+  <% @members.each do |member| %>
+    $("#member-<%= member.id %>").effect("highlight");
+  <% end %>
+<%
+    ########################################################
+    # Smile specific #24789 Project Leaders users activation
+    # Smile comment  : add flash message for activated members
+    if @users_activated.present?
+      logger.info "==>users activated : #{@users_activated}"
+      flash[:notice] = l(:label_users_activated) + @users_activated
+-%>
+$('#tab-content-members').before('<%= escape_javascript(render_flash_messages) %>');
+<%
+      flash.delete(:notice)
+    end
+    # END -- Smile specific #24789 Project Leaders users activation
+    ###############################################################
+-%>
+<% elsif @members.present? %>
+  <% errors = @members.collect {|m| m.errors.full_messages}.flatten.uniq.join(', ') %>
+  alert('<%= raw(escape_javascript(l(:notice_failed_to_save_members, :errors => errors))) %>');
+<% end %>

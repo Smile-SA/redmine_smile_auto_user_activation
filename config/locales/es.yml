@@ -1,0 +1,6 @@
+# Spanish translations for Auto User Activation Plugin
+# by Jérôme BATAILLE (redmine-support@smile.fr)
+
+es:
+  #24789 Project Leaders users activation
+  label_users_activated: 'Los usuarios activan:'
