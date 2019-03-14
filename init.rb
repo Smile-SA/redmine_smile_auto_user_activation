@@ -12,6 +12,12 @@ Rails.logger.info "o=>Application user : #{ENV['USER']}"
 plugin_name = :redmine_smile_auto_user_activation
 plugin_root = File.dirname(__FILE__)
 
+# If not brought by other plugin
+unless defined?(SmileTools)
+  # lib/not_reloaded
+  require plugin_root + '/lib/not_reloaded/smile_tools'
+end
+
 
 Redmine::Plugin.register plugin_name do
   ########################
@@ -21,7 +27,7 @@ Redmine::Plugin.register plugin_name do
   author_url "mailto:Jerome BATAILLE <redmine-support@smile.fr>?subject=#{plugin_name}"
   description "Adds new User Automatic Activation when User is added in it's first project"
   url "https://github.com/Smile-SA/#{plugin_name}"
-  version '1.0.0'
+  version '1.0.1'
   requires_redmine :version_or_higher => '2.6.1'
 
   #######################

@@ -16,7 +16,7 @@ module Smile
         # extend ActiveSupport::Concern
 
         def self.prepended(base)
-          # No sub-module included => no check if already included (TODO jebat test on scopes ?)
+          # No sub-module included => no check if already included
 
           # Add instance methods calls in the class initialisation
           base.instance_eval do
@@ -25,6 +25,7 @@ module Smile
               :redmine_smile_auto_user_activation
 
             # new scope RM V4.0.0 OK
+            # TODO add tests on scopes
             ##########################################################
             # Smile specific #24789 Projects Leaders to activate users
             # WARNING do not use User constants here
@@ -47,6 +48,8 @@ module Smile
                 end
 
                 if view_all_active
+                  #################################
+                  # Smile spectific : active -> all
                   all
                 else
                   # self and members of visible projects
