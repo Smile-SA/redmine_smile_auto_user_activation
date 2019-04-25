@@ -60,6 +60,30 @@ module Smile
               end
             }
           end
+
+          def add_to_group(group)
+            return false unless is_a?(User)
+
+            return false if group.nil?
+
+            return false if self.groups.pluck(:lastname).include?(group.name)
+
+            added_to_group = false
+            begin
+              self.groups << group
+              self.save
+
+              added_to_group = true
+            rescue Exception => e
+              Rails.logger.error "Plugin redmine_smile_auto_user_activation, user #{self.login}, add_to_group #{group.name} : #{e.message}"
+            end
+
+            if added_to_group
+              return group.name
+            else
+              return false
+            end
+          end
         end
       end # module AutoUserActivation
     end # module PrincipalOverride

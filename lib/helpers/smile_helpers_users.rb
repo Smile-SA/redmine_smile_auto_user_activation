@@ -14,11 +14,11 @@ module Smile
       module AutoUserActivation
         def self.prepended(base)
           auto_user_activation_instance_methods = [
-            :change_status_link # 1/ OVERRIDEN rewritten V4.0.0 OK
+            :change_status_link # 1/ REWRITTEN V4.0.0 OK
           ]
 
           base.module_eval do
-            # 1/ OVERRIDEN rewritten, RM 4.0.0 OK
+            # 1/ REWRITTEN, RM 4.0.0 OK
             # Smile specific #24789 Projet Leaders to activate users
             # Smile specific : add an un-activate link
             def change_status_link(user)

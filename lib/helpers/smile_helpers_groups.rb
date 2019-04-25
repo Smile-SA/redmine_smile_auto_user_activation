@@ -15,12 +15,12 @@ module Smile
       module AutoUserActivation
         def self.prepended(base)
           auto_user_activation_instance_methods = [
-            :render_principals_for_new_group_users # 1/ OVERRIDEN rewritten, RM 4.0.0 OK
+            :render_principals_for_new_group_users # 1/ REWRITTEN, RM 4.0.0 OK
           ]
 
           # Methods dynamically rewritten in the Helper module
           base.module_eval do
-            # 1/ OVERRIDEN rewritten, RM 4.0.0 OK
+            # 1/ REWRITTEN, RM 4.0.0 OK
             def render_principals_for_new_group_users(group, limit=100)
               scope = User.active.sorted.not_in_group(group).like(params[:q])
               principal_count = scope.count

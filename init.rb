@@ -16,6 +16,7 @@ plugin_root = File.dirname(__FILE__)
 unless defined?(SmileTools)
   # lib/not_reloaded
   require plugin_root + '/lib/not_reloaded/smile_tools'
+  require plugin_root + '/lib/not_reloaded/plugin_config'
 end
 
 
@@ -25,9 +26,9 @@ Redmine::Plugin.register plugin_name do
   name 'Redmine - Smile - Auto User Activation'
   author 'Jérôme BATAILLE'
   author_url "mailto:Jerome BATAILLE <redmine-support@smile.fr>?subject=#{plugin_name}"
-  description "Adds new User Automatic Activation when User is added in it's first project"
+  description "Adds new User Automatic Activation when User is added in it's first project, at this moment User can optionally be added to a default Group"
   url "https://github.com/Smile-SA/#{plugin_name}"
-  version '1.0.1'
+  version '1.0.2'
   requires_redmine :version_or_higher => '2.6.1'
 
   #######################

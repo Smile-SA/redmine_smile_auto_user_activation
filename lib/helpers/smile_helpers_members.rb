@@ -15,11 +15,11 @@ module Smile
       module AutoUserActivation
         def self.prepended(base)
           auto_user_activation_instance_methods = [
-            :render_principals_for_new_members # 1/ OVERRIDEN rewirtten, RM 4.0.0 OK
+            :render_principals_for_new_members # 1/ REWRITTEN, RM 4.0.0 OK
           ]
 
           base.module_eval do
-            # 1/ OVERRIDEN rewritten, RM 4.0.0 OK
+            # 1/ REWRITTEN, RM 4.0.0 OK
             # Smile specific #24789 Projet Leaders to activate users
             def render_principals_for_new_members(project, limit=100)
               ########################################################

@@ -15,12 +15,12 @@ module Smile
       module AutoUserActivation
         def self.prepended(base)
           auto_user_activation_instance_methods = [
-            :principals_check_box_tags, # 1/ OVERRDIDEN rewritten V4.0.0 OK
+            :principals_check_box_tags, # 1/ REWRITTEN V4.0.0 OK
           ]
 
           base.module_eval do
-            #***********************
-            # 1/ OVERRIDEN rewritten, RM 4.0.0 OK
+            #*************
+            # 1/ REWRITTEN, RM 4.0.0 OK
             # Smile specific #24789 Project Leaders can activate users, users to activate in lightgray
             # - optional parameter added ; p_link
             # - not enabled by default

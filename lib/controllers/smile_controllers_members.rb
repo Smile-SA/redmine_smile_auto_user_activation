@@ -16,7 +16,7 @@ module Smile
 
         def self.prepended(base)
           auto_user_activation_methods = [
-            :create, # 1/ OVERRIDEN rewritten, RM 4.0.0 OK
+            :create, # 1/ REWRITTEN, RM 4.0.0 OK
           ]
 
           smile_instance_methods = base.instance_methods.select{|m|
@@ -36,7 +36,7 @@ module Smile
           )
         end
 
-        # 1/ OVERRIDEN rewritten, RM 4.0.0 OK
+        # 1/ REWRITTEN, RM 4.0.0 OK
         def create
           members = []
 
@@ -84,7 +84,12 @@ module Smile
                   Rails.logger.debug "==>users #{user_to_activate.login}.activate!"
 
                   # Smile specific : activated members for flash message
-                  @users_activated += "<br/>#{ERB::Util.h user_to_activate.name}"
+                  @users_activated += "<br/><b>#{ERB::Util.h user_to_activate.name}</b>"
+
+                  # Smile specific : add the user to a Group configured in Plugin settings
+                  if default_group_name = user_to_activate.add_to_group(PluginConfig.get_default_group_for_user)
+                    @users_activated += ", added to GROUP : <b>#{ERB::Util.h default_group_name}</b>"
+                  end
                 end
               end
               # END -- Smile specific #24789 Project Leaders users activation
