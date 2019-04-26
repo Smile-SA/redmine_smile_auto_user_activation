@@ -81,8 +81,8 @@ It is higlhy suggested to give them a specific color in :
 
 # Changelog
 
-* **V1.0.2** New option to add debug traces in Rails log file
-* **V1.0.1** New option to add user in a default group
+* **V1.0.3** New option to add debug traces in Rails log file
+* **V1.0.2** New option to add user in a default group
 * **V1.0.0** Initial version
 
 
