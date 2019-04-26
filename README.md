@@ -6,6 +6,7 @@ Redmine plugin that adds the hability to **auto enable new users**, the **first 
 Not yet activated users will be available in add Members to Project popup.
 A notice message is added when user(s) have been activated.
 Optionally a **default group** can be assigned to them.
+A debug option is available in the plugin settings to add traces in the Rails log file.
 
 # How it works
 
@@ -77,6 +78,13 @@ It is higlhy suggested to give them a specific color in :
   color: #8F9C9C;
 }
 ```
+
+# Changelog
+
+* **V1.0.2** New option to add debug traces in Rails log file
+* **V1.0.1** New option to add user in a default group
+* **V1.0.0** Initial version
+
 
 Enjoy !
 

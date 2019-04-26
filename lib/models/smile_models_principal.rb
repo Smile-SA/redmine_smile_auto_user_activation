@@ -61,18 +61,33 @@ module Smile
             }
           end
 
-          def add_to_group(group)
-            return false unless is_a?(User)
-
-            return false if group.nil?
-
-            return false if self.groups.pluck(:lastname).include?(group.name)
-
-            added_to_group = false
+          def add_to_group(group, debug=false)
             begin
+              unless is_a?(User)
+                Rails.logger.info "==>auto_user_activation add_to_group, user is not a User : #{self.class}" if debug
+
+                return false
+              end
+
+              if group.nil?
+                Rails.logger.info " =>auto_user_activation add_to_group, group nil" if debug
+
+                return false
+              end
+
+              user_group_names = self.groups.pluck(:lastname)
+
+              if user_group_names.include?(group.name)
+                Rails.logger.info " =>auto_user_activation add_to_group, user ALREADY member groups=#{user_group_names.join(', ')}" if debug
+
+                return false
+              end
+
+              added_to_group = false
               self.groups << group
               self.save
 
+              Rails.logger.info " =>auto_user_activation add_to_group, user added to group #{group.name}" if debug
               added_to_group = true
             rescue Exception => e
               Rails.logger.error "Plugin redmine_smile_auto_user_activation, user #{self.login}, add_to_group #{group.name} : #{e.message}"

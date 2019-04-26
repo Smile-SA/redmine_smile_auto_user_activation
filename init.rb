@@ -28,7 +28,7 @@ Redmine::Plugin.register plugin_name do
   author_url "mailto:Jerome BATAILLE <redmine-support@smile.fr>?subject=#{plugin_name}"
   description "Adds new User Automatic Activation when User is added in it's first project, at this moment User can optionally be added to a default Group"
   url "https://github.com/Smile-SA/#{plugin_name}"
-  version '1.0.2'
+  version '1.0.3'
   requires_redmine :version_or_higher => '2.6.1'
 
   #######################

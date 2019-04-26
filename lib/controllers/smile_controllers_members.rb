@@ -81,13 +81,14 @@ module Smile
                 @users_activated = ''
                 users_to_activate.each do |user_to_activate|
                   user_to_activate.activate!
-                  Rails.logger.debug "==>users #{user_to_activate.login}.activate!"
+                  debug = PluginConfig.debug
+                  Rails.logger.debug "==>users #{user_to_activate.login}.activate!" if debug
 
                   # Smile specific : activated members for flash message
                   @users_activated += "<br/><b>#{ERB::Util.h user_to_activate.name}</b>"
 
                   # Smile specific : add the user to a Group configured in Plugin settings
-                  if default_group_name = user_to_activate.add_to_group(PluginConfig.get_default_group_for_user)
+                  if default_group_name = user_to_activate.add_to_group(PluginConfig.get_default_group_for_user(debug), debug)
                     @users_activated += ", added to GROUP : <b>#{ERB::Util.h default_group_name}</b>"
                   end
                 end
