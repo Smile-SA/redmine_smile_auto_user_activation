@@ -26,9 +26,9 @@ A debug option is available in the plugin settings to add traces in the Rails lo
 
 * Application Helper
 
-  Method **principals_check_box_tags**
+  - Method **principals_check_box_tags**
 
-  New link option to have link on user, status class added
+    New link option to have link on user, status class added
 
 * Groups Helper
 
@@ -36,13 +36,13 @@ A debug option is available in the plugin settings to add traces in the Rails lo
 
 * Members Helper
 
-  Method **render_principals_for_new_members helper**
+  - Method **render_principals_for_new_members helper**
 
-  Users listed : active -> active_or_to_activate
+    Users listed : active -> active_or_to_activate
 
-  Link to user enabled
+    Link to user enabled
 
-  Grey color for users to activate (3rd param = true)
+    Grey color for users to activate (3rd param = true)
 
 * Users Helper
 
@@ -55,7 +55,7 @@ A debug option is available in the plugin settings to add traces in the Rails lo
 
 ### Tools in lib/not_reloaded
 
-* **smile_tools.rb**
+* New **smile_tools.rb**
 
   Methods to trace **overrides made by Smile plugins**, overrides listed in plugin settings
   * **trace_by_line**
@@ -64,7 +64,7 @@ A debug option is available in the plugin settings to add traces in the Rails lo
 
   Method to debug a scope : **debug_scope**
 
-* **plugin_config.rb**
+* New **plugin_config.rb**
 
   Method **get_default_group_for_user** to cache the **Group** to add to the newly activated users
 
