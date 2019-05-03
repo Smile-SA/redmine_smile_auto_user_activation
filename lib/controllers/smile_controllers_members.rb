@@ -15,25 +15,47 @@ module Smile
         # extend ActiveSupport::Concern
 
         def self.prepended(base)
-          auto_user_activation_methods = [
+          auto_user_activation_instance_methods = [
             :create, # 1/ REWRITTEN, RM 4.0.0 OK
           ]
 
-          smile_instance_methods = base.instance_methods.select{|m|
+          auto_user_activation_instance_methods = base.instance_methods.select{|m|
               base.instance_method(m).owner == self
             }
 
-          trace_first_prefix = "#{base.name}     instance_methods  "
+          smile_instance_methods = base.instance_methods.select{|m|
+              auto_user_activation_instance_methods.include?(m) &&
+                base.instance_method(m).source_location.first =~ SmileTools.regex_path_in_plugin('lib/controllers/smile_controllers_members', 'redmine_smile_auto_user_activation')
+            }
+
+          missing_instance_methods = auto_user_activation_instance_methods.select{|m|
+            !smile_instance_methods.include?(m)
+          }
+
           trace_prefix       = "#{' ' * (base.name.length - 4)}                     --->  "
           last_postfix       = '< (SM::CO::MembersOverride::AutoUserActivation)'
 
+          if missing_instance_methods.any?
+            trace_first_prefix = "#{base.name} MIS instance_methods  "
+          else
+            trace_first_prefix = "#{base.name}     instance_methods  "
+          end
+
           SmileTools::trace_by_line(
-            smile_instance_methods,
+            (
+              missing_instance_methods.any? ?
+              missing_instance_methods :
+              smile_instance_methods
+            ),
             trace_first_prefix,
             trace_prefix,
             last_postfix,
             :redmine_smile_auto_user_activation
           )
+
+          if missing_instance_methods.any?
+            raise trace_first_prefix + missing_instance_methods.join(', ') + '  ' + last_postfix
+          end
         end
 
         # 1/ REWRITTEN, RM 4.0.0 OK
