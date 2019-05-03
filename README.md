@@ -14,10 +14,8 @@ A debug option is available in the plugin settings to add traces in the Rails lo
 
 * Members Controller action **create**
 
-  Activate users when added to project, if **no error**
-
-  Generate a **flash message** to indicate which users have been activated
-
+  Activate users when added to project, if **no error**  
+  Generate a **flash message** to indicate which users have been activated  
   **Optionally** : if group name set in plugin settings, add newly activated users **to a group**
 
 * Members View **app/views/members/create.js.erb**
@@ -38,10 +36,8 @@ A debug option is available in the plugin settings to add traces in the Rails lo
 
   - Method **render_principals_for_new_members helper**
 
-    Users listed : active -> active_or_to_activate
-
-    Link to user enabled
-
+    Users listed : active -> active_or_to_activate  
+    Link to user enabled  
     Grey color for users to activate (3rd param = true)
 
 * Users Helper
