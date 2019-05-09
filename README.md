@@ -34,7 +34,7 @@ A debug option is available in the plugin settings to add traces in the Rails lo
 
 * 🔑 Members View **app/views/members/create.js.erb**
 
-## Overrides Helpers
+## 🔑 Overrides Helpers
 
 * Application Helper
 
