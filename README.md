@@ -10,31 +10,31 @@ A debug option is available in the plugin settings to add traces in the Rails lo
 
 # How it works
 
-## Overrides the Members create action
+## 🔑 Overrides the Members create action
 
-* Members Controller action **create**
+* 🔑 Members Controller action **create**
 
   Activate users when added to project, if **no error**  
   Generate a **flash message** to indicate which users have been activated  
   **Optionally** : if group name set in plugin settings, add newly activated users **to a group**
 
-* Members View **app/views/members/create.js.erb**
+* 🔑 Members View **app/views/members/create.js.erb**
 
 ## Overrides Helpers
 
 * Application Helper
 
-  - Method **principals_check_box_tags**
+  - 🔑 Method **principals_check_box_tags**
 
     New link option to have link on user, status class added
 
 * Groups Helper
 
-  Method **render_principals_for_new_group_users**, added link param value
+  🔑 Method **render_principals_for_new_group_users**, added link param value
 
 * Members Helper
 
-  - Method **render_principals_for_new_members helper**
+  - 🔑 Method **render_principals_for_new_members helper**
 
     Users listed : active -> active_or_to_activate  
     Link to user enabled  
@@ -42,14 +42,14 @@ A debug option is available in the plugin settings to add traces in the Rails lo
 
 * Users Helper
 
-  Method **change_status_link**, add an un-activate link
+  🔑 Method **change_status_link**, add an un-activate link
 
-## Principal Model
+## Augment Principal Model
 
   * New scopes **active_or_to_activate**, **visible_any_status**
   * New method **add_to_group**
 
-### Tools in lib/not_reloaded
+### New Tools in lib/not_reloaded
 
 * New **smile_tools.rb**
 
