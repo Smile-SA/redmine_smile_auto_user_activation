@@ -3,12 +3,26 @@ redmine_smile_auto_user_activation
 
 Redmine plugin that adds the hability to **auto enable new users**, the **first time** they are **added in a project**.
 
-Not yet activated users will be available in add Members to Project popup.
+Not yet activated users will be available in **Add Members to Project** popup.
 A notice message is added when user(s) have been activated.
 Optionally a **default group** can be assigned to them.
 A debug option is available in the plugin settings to add traces in the Rails log file.
 
 # How it works
+
+* Not yet activated users are now available in the Add Members popup :
+
+<kbd>![alt text](https://github.com/Smile-SA/redmine_smile_auto_user_activation/blob/master/documentation/redmine_smile_auto_user_to_activate.png "Not yet enabled users are available in the Add Members popup")</kbd>
+
+* When validating the new users, a **notice message** is added for the users that have just been activated :
+
+<kbd>![alt text](https://github.com/Smile-SA/redmine_smile_auto_user_activation/blob/master/documentation/redmine_smile_auto_user_activated.png "A Notice message is added for the users that just have been activated")</kbd>
+ 
+* The notice tells if the user was added to the **default group**, if it was configured in the plugins settings :
+
+<kbd>![alt text](https://github.com/Smile-SA/redmine_smile_auto_user_activation/blob/master/documentation/add_to_default_group.png "The Notice tells if the user was added to the default group")</kbd>
+
+# How it is implemented
 
 ## 🔑 Overrides the Members create action
 
