@@ -17,7 +17,7 @@ A debug option is available in the plugin settings to add traces in the Rails lo
 * When validating the new users, a **notice message** is added for the users that have just been activated :
 
 <kbd>![alt text](https://github.com/Smile-SA/redmine_smile_auto_user_activation/blob/master/documentation/redmine_smile_auto_user_activated.png "A Notice message is added for the users that just have been activated")</kbd>
- 
+
 * The notice tells if the user was added to the **default group**, if it was configured in the plugins settings :
 
 <kbd>![alt text](https://github.com/Smile-SA/redmine_smile_auto_user_activation/blob/master/documentation/add_to_default_group.png "The Notice tells if the user was added to the default group")</kbd>
@@ -28,13 +28,13 @@ A debug option is available in the plugin settings to add traces in the Rails lo
 
 * 🔑 Members Controller action **create**
 
-  Activate users when added to project, if **no error**  
-  Generate a **flash message** to indicate which users have been activated  
+  Activate users when added to project, if **no error**
+  Generate a **flash message** to indicate which users have been activated
   **Optionally** : if group name set in plugin settings, add newly activated users **to a group**
 
 * 🔑 Members View **app/views/members/create.js.erb**
 
-## 🔑 Overrides Helpers
+## Overrides Helpers
 
 * Application Helper
 
@@ -50,8 +50,8 @@ A debug option is available in the plugin settings to add traces in the Rails lo
 
   - 🔑 Method **render_principals_for_new_members helper**
 
-    Users listed : active -> active_or_to_activate  
-    Link to user enabled  
+    Users listed : active -> active_or_to_activate
+    Link to user enabled
     Grey color for users to activate (3rd param = true)
 
 * Users Helper
