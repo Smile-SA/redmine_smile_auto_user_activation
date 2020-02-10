@@ -80,7 +80,7 @@ rails_dispatcher.to_prepare do
   SmileTools.reset_override_count(plugin_name)
 
   SmileTools.trace_override "                                plugin  #{plugin_name} V#{plugin_version}",
-    true,
+    false,
     :redmine_smile_auto_user_activation
 
 
